@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Favicon  -->
+        <link rel="icon" href="{{ asset('img/core-img/favicon.ico') }}">
+
+        {% block stylesheets %}
+            <!-- Core Style CSS -->
+            <link rel="stylesheet" href="{{ asset('css/core-style.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+            <!-- Responsive CSS -->
+            <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+        {% endblock %}
+        <title>{% block title %}Studio - Creative Photography Template | Home{% endblock %}</title>
+
+    </head>
+    <body>
+        {% block header %}
+            <!-- Preloader -->
+            <div id="preloader">
+                <div class="showbox">
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="questions-area text-center">
+                    <p>Did you know?</p>
+                    <ul>
+                        <li>The largest photography competition is 353,768 entries.</li>
+                        <li>Photography is the toughest profession in the world.</li>
+                        <li>The world’s largest photo album by dimensions was 13 ft 11.5 in x 17 ft.</li>
+                        <li>The world’s largest photo mosaic featured 176,175 pictures.</li>
+                        <li>The world’s largest camera lens was a 5200mm lens attached to a canon.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gradient Background Overlay -->
+            <div class="gradient-background-overlay"></div>
+
+            <!-- Header Area Start -->
+            {% block header_area %}
+                <header class="header-area">
+                    {% include 'common/header_row.html.twig' %}
+                </header>
+            {% endblock %}
+            <!-- Header Area End -->
+
+            {% block social_sidebar_area %}
+                <!-- Social Sidebar Area Start -->
+                <div class="social-sidebar-area bg-white">
+                    <!-- Social Area -->
+                    {% include 'common/social_info_area.html.twig' %}
+                    {% block messagebox %}{% endblock %}
+                </div>
+                <!-- Social Sidebar Area End -->
+            {% endblock %}
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}{% endblock %}
+        {% block javascripts %}
+            <!-- jQuery (Necessary for All JavaScript Plugins) -->
+            <script src="js/jquery/jquery-2.2.4.min.js"></script>
+            <!-- Popper js -->
+            <script src="js/popper.min.js"></script>
+            <!-- Bootstrap js -->
+            <script src="js/bootstrap.min.js"></script>
+            <!-- Plugins js -->
+            <script src="js/plugins.js"></script>
+            <!-- Active js -->
+            <script src="js/active.js"></script>
+        {% endblock %}
+    </body>
+</html>

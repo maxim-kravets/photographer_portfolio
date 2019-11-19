@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block social_sidebar_area %}
+    <!-- Social Sidebar Area Start -->
+    <div class="social-sidebar-area">
+        <!-- Social Area -->
+        {% include 'common/social_info_area.html.twig' %}
+    </div>
+    <!-- Social Sidebar Area End -->
+{% endblock %}
+
+{% block body %}
+    <section class="contact-area section_padding_100 mt-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="contact-heading-text text-center mb-100">
+                        <span></span>
+                        <h2>Please get in touch</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate id justo quis facilisis. Vestibulum id orci ligula. Sed tempor, nunc ut sodales pulvinar, mauris ante euismod magna, at elementum lectus leo sed enim. Praesent dictum suscipit tincidunt. Nulla facilisi. Aenean in mollis orci. Ut interdum vulputate ante a egestas. Pellentesque varius purus malesuada arcu semper vehicula. </p>
+                    </div>
+                </div>
+                <!-- Contact Form Area -->
+                <div class="col-10">
+                    <div class="contact-form-area">
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn studio-btn mt-3"><img src="img/core-img/logo-icon.png" alt=""> Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <!-- Google Maps -->
+    <div class="map-area">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-10">
+                    <div id="googleMap"></div>
+                    <!-- Contact Info -->
+                    <div class="contact-core-info d-flex align-items-center wow fadeInLeftBig" data-wow-delay="1s" data-wow-duration="1000ms">
+                        <div class="contactInfo">
+                            <img src="img/core-img/logo.png" alt="">
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/map.png" alt="">
+                                <a href="#">Blvd Libertad, 34 m05200 Arévalo</a>
+                            </div>
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/smartphone.png" alt="">
+                                <a href="#">0034 37483 2445 322</a>
+                            </div>
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/envelope-2.png" alt="">
+                                <a href="#">hello@company.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'common/follow_me_instagram.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+    <script src="js/map-active.js"></script>
+{% endblock %}
