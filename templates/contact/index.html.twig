@@ -65,17 +65,17 @@
                             <!-- Single Footer Content -->
                             <div class="single-footer-content">
                                 <img src="img/core-img/map.png" alt="">
-                                <a href="#">Blvd Libertad, 34 m05200 Arévalo</a>
+                                <a href="#">Kiyv, Gogolevskaya 27</a>
                             </div>
                             <!-- Single Footer Content -->
                             <div class="single-footer-content">
                                 <img src="img/core-img/smartphone.png" alt="">
-                                <a href="#">0034 37483 2445 322</a>
+                                <a href="#">+38 (066) 083 07 02</a>
                             </div>
                             <!-- Single Footer Content -->
                             <div class="single-footer-content">
                                 <img src="img/core-img/envelope-2.png" alt="">
-                                <a href="#">hello@company.com</a>
+                                <a href="#">kravets.photography@gmail.com</a>
                             </div>
                         </div>
                     </div>
@@ -88,6 +88,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
-    <script src="js/map-active.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEe7QFaESS27A2olWVPyMfs6FRCwkuAq0&callback=initMap"></script>
+    <script src="{{ asset('js/map-active.js?v=1574254767') }}"></script>
 {% endblock %}
