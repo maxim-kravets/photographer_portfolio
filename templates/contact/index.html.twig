@@ -15,6 +15,17 @@
     <section class="contact-area section_padding_100 mt-100">
         <div class="container">
             <div class="row justify-content-center">
+                {% for label, messages in app.flashes(['warning', 'danger', 'success']) %}
+                    {% for message in messages %}
+                        <div class="col-10">
+                            <div class="contact-heading-text text-center mb-100">
+                                <div class="alert alert-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 <div class="col-10">
                     <div class="contact-heading-text text-center mb-100">
                         <span></span>
@@ -25,25 +36,7 @@
                 <!-- Contact Form Area -->
                 <div class="col-10">
                     <div class="contact-form-area">
-                        <form action="#" method="post">
-                            <div class="row">
-                                <div class="col-12 col-md-4">
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-                                </div>
-                                <div class="col-12">
-                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn studio-btn mt-3"><img src="img/core-img/logo-icon.png" alt=""> Send</button>
-                                </div>
-                            </div>
-                        </form>
+                        {% include 'common/contact_form.html.twig' %}
                     </div>
                 </div>
             </div>
@@ -61,21 +54,21 @@
                     <!-- Contact Info -->
                     <div class="contact-core-info d-flex align-items-center wow fadeInLeftBig" data-wow-delay="1s" data-wow-duration="1000ms">
                         <div class="contactInfo">
-                            <img src="img/core-img/logo.png" alt="">
+                            <img src="{{ asset('img/core-img/logo.png') }}" alt="">
                             <!-- Single Footer Content -->
                             <div class="single-footer-content">
-                                <img src="img/core-img/map.png" alt="">
+                                <img src="{{ asset('img/core-img/map.png') }}" alt="">
                                 <a href="#">Kiyv, Gogolevskaya 27</a>
                             </div>
                             <!-- Single Footer Content -->
                             <div class="single-footer-content">
-                                <img src="img/core-img/smartphone.png" alt="">
+                                <img src="{{ asset('img/core-img/smartphone.png') }}" alt="">
                                 <a href="#">+38 (066) 083 07 02</a>
                             </div>
                             <!-- Single Footer Content -->
                             <div class="single-footer-content">
-                                <img src="img/core-img/envelope-2.png" alt="">
-                                <a href="#">kravets.photography@gmail.com</a>
+                                <img src="{{ asset('img/core-img/envelope-2.png') }}" alt="">
+                                <a href="#">kravets.photographer@gmail.com</a>
                             </div>
                         </div>
                     </div>
