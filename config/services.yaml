@@ -25,3 +25,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\Storage\S3StoreConfiguration:
+        arguments:
+            $version: '%env(AWS_VERSION)%'
+            $region: '%env(AWS_REGION)%'
+            $base_url: '%env(AWS_BASE_URL)%'
+            $bucket: '%env(AWS_BUCKET)%'
+            $access_key: '%env(AWS_ACCESS_KEY)%'
+            $secret_key: '%env(AWS_SECRET_KEY)%'
