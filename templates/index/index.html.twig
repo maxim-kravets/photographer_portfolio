@@ -32,7 +32,7 @@
             <ol class="carousel-indicators">
                 {% for photo in photos %}
                     {% set photo_url = storage.getPhotoUrl(photo.getId()) %}
-                    <li data-target="#welcomeSlider" data-slide-to="{{ photo.getId() }}" class="active bg-img" style="background-image: url({{ photo_url }});"></li>
+                    <li data-target="#welcomeSlider" data-slide-to="{{ photo.getId() - 1 }}" class="active bg-img" style="background-image: url({{ photo_url }});"></li>
                 {% endfor %}
             </ol>
         </div>

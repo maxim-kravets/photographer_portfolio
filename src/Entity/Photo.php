@@ -21,6 +21,11 @@ class Photo
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $instagram_url;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Photo
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getInstagramUrl(): ?string
+    {
+        return $this->instagram_url;
+    }
+
+    public function setInstagramUrl(?string $instagram_url): self
+    {
+        $this->instagram_url = $instagram_url;
 
         return $this;
     }
