@@ -18,54 +18,24 @@
     <section class="blog-area section_padding_100 mt-100">
         <div class="container">
             <div class="row justify-content-center">
+                {% for article in articles %}
                 <!-- Single Blog Area -->
-                <div class="col-10">
+                    <div class="col-10">
                     <div class="single-blog-area text-center mb-100 wow fadeInUpBig" data-wow-delay="100ms" data-wow-duration="1s">
                         <div class="blog-thumbnail mb-100">
-                            <img src="img/bg-img/b1.jpg" alt="">
+                            <img src="{{ storage.getPhotoUrl(article.getPhotoId()) }}" alt="">
                         </div>
                         <div class="blog-content">
                             <span></span>
-                            <h2>10 Photography tips for begginers</h2>
-                            <a href="#" class="post-date">Dec 01, 2017</a>
+                            <h2>{{ article.getTitle() }}</h2>
+                            <a href="#" class="post-date">{{ article.getDate().format('F j, Y') }}</a>
                             <a href="#" class="post-author">By James Smith</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate id justo quis facilisis. Vestibulum id orci ligula. Sed tempor, nunc ut sodales pulvinar, mauris ante euismod magna, at elementum lectus leo sed enim. Praesent dictum suscipit tincidunt. Nulla facilisi. Aenean in mollis orci. Ut interdum vulputate ante a egestas. Pellentesque varius purus malesuada arcu semper vehicula. </p>
-                            <a href="#" class="btn studio-btn"><img src="img/core-img/logo-icon.png" alt=""> Read More</a>
+                            <p>{{ article.getText() }}</p>
+                            <a href="#" class="btn studio-btn"><img src="{{ asset('img/core-img/logo-icon.png') }}" alt=""> Read More</a>
                         </div>
                     </div>
                 </div>
-                <!-- Single Blog Area -->
-                <div class="col-10">
-                    <div class="single-blog-area text-center mb-100 wow fadeInUpBig" data-wow-delay="100ms" data-wow-duration="1s">
-                        <div class="blog-thumbnail mb-100">
-                            <img src="img/bg-img/b2.jpg" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <span></span>
-                            <h2>The best online tutorials for photographers</h2>
-                            <a href="#" class="post-date">Dec 01, 2017</a>
-                            <a href="#" class="post-author">By James Smith</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate id justo quis facilisis. Vestibulum id orci ligula. Sed tempor, nunc ut sodales pulvinar, mauris ante euismod magna, at elementum lectus leo sed enim. Praesent dictum suscipit tincidunt. Nulla facilisi. Aenean in mollis orci. Ut interdum vulputate ante a egestas. Pellentesque varius purus malesuada arcu semper vehicula. </p>
-                            <a href="#" class="btn studio-btn"><img src="img/core-img/logo-icon.png" alt=""> Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Blog Area -->
-                <div class="col-10">
-                    <div class="single-blog-area text-center mb-100 wow fadeInUpBig" data-wow-delay="100ms" data-wow-duration="1s">
-                        <div class="blog-thumbnail mb-100">
-                            <img src="img/bg-img/b3.jpg" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <span></span>
-                            <h2>Perfect light for street art</h2>
-                            <a href="#" class="post-date">Dec 01, 2017</a>
-                            <a href="#" class="post-author">By James Smith</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate id justo quis facilisis. Vestibulum id orci ligula. Sed tempor, nunc ut sodales pulvinar, mauris ante euismod magna, at elementum lectus leo sed enim. Praesent dictum suscipit tincidunt. Nulla facilisi. Aenean in mollis orci. Ut interdum vulputate ante a egestas. Pellentesque varius purus malesuada arcu semper vehicula. </p>
-                            <a href="#" class="btn studio-btn"><img src="img/core-img/logo-icon.png" alt=""> Read More</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <!-- Pagination -->
             <div class="row">

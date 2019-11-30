@@ -22,14 +22,14 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $text;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     /**
      * @ORM\Column(type="integer")
@@ -53,18 +53,6 @@ class Article
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
     public function getText(): ?string
     {
         return $this->text;
@@ -73,6 +61,18 @@ class Article
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
