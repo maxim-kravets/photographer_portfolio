@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Repository\ArticleRepository;
 use App\Repository\PhotoRepository;
 use App\Service\Storage\S3FileStorage;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
@@ -25,27 +27,57 @@ class BlogController extends AbstractController
      */
     private $articleRepository;
 
+    private $paginator;
+
     public function __construct(
         S3FileStorage $s3FileStorage,
         PhotoRepository $photoRepository,
-        ArticleRepository $articleRepository
+        ArticleRepository $articleRepository,
+        PaginatorInterface $paginator
     ) {
         $this->s3FileStorage = $s3FileStorage;
         $this->photoRepository = $photoRepository;
         $this->articleRepository = $articleRepository;
+        $this->paginator = $paginator;
     }
 
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/blog/{page}", name="blog")
+     *
+     * @param ArticleRepository $articleRepository
+     * @param int $page
+     *
+     * @return Response
      */
-    public function index()
+    public function index(ArticleRepository $articleRepository, int $page = 1)
     {
+        $queryBuilder = $articleRepository->getQueryBuilder();
+        $pagination = $this->paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $page,
+            3 /*limit per page*/
+        );
+
         $photos = $this->photoRepository->getList(1, 7);
-        $articles = $this->articleRepository->getList(1, 3);
+
+//        \dd($pagination);
+
 
         return $this->render('blog/index.html.twig', [
             'photos' => $photos,
-            'articles' => $articles
+            'pagination' => $pagination
         ]);
+    }
+
+    /**
+     * @Route("/blog/article/{id}", name="article")
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function article(int $id)
+    {
+        return $this->render('blog/article.html.twig');
     }
 }

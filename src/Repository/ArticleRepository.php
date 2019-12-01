@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,21 +19,16 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function getList(int $page = 1, int $limit = 10)
+    public function getQueryBuilder()
     {
         $query = $this->getEntityManager()
             ->createQueryBuilder()
             ->select('a')
             ->from('App\Entity\Article', 'a')
             ->orderBy('a.id', 'DESC')
-            ->getQuery()
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit)
         ;
 
-        $paginator = new Paginator($query, false);
-
-        return $paginator;
+        return $query;
     }
 
 

@@ -18,23 +18,23 @@
     <section class="blog-area section_padding_100 mt-100">
         <div class="container">
             <div class="row justify-content-center">
-                {% for article in articles %}
+                {% for article in pagination %}
                 <!-- Single Blog Area -->
                     <div class="col-10">
-                    <div class="single-blog-area text-center mb-100 wow fadeInUpBig" data-wow-delay="100ms" data-wow-duration="1s">
-                        <div class="blog-thumbnail mb-100">
-                            <img src="{{ storage.getPhotoUrl(article.getPhotoId()) }}" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <span></span>
-                            <h2>{{ article.getTitle() }}</h2>
-                            <a href="#" class="post-date">{{ article.getDate().format('F j, Y') }}</a>
-                            <a href="#" class="post-author">By James Smith</a>
-                            <p>{{ article.getText() }}</p>
-                            <a href="#" class="btn studio-btn"><img src="{{ asset('img/core-img/logo-icon.png') }}" alt=""> Read More</a>
+                        <div class="single-blog-area text-center mb-100 wow fadeInUpBig" data-wow-delay="100ms" data-wow-duration="1s">
+                            <div class="blog-thumbnail mb-100">
+                                <img src="{{ storage.getPhotoUrl(article.getPhotoId()) }}" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <span></span>
+                                <h2>{{ article.getTitle() }}</h2>
+                                <a href="#" class="post-date">{{ article.getDate().format('F j, Y') }}</a>
+                                <a href="{{ path('about') }}" class="post-author">By Maxim Kravets</a>
+                                <p>{{ article.getText() }}</p>
+                                <a href="{{ path('article', {'id': article.getId()}) }}" class="btn studio-btn"><img src="{{ asset('img/core-img/logo-icon.png') }}" alt=""> Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
             <!-- Pagination -->
@@ -42,10 +42,7 @@
                 <div class="col-12">
                     <nav aria-label="Page navigation" class="pagination-area mb-100">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                            <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                            <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                            <li class="page-item"><a class="page-link" href="#">04.</a></li>
+                            {{ knp_pagination_render(pagination) }}
                         </ul>
                     </nav>
                 </div>
