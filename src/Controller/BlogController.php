@@ -53,15 +53,12 @@ class BlogController extends AbstractController
     {
         $queryBuilder = $articleRepository->getQueryBuilder();
         $pagination = $this->paginator->paginate(
-            $queryBuilder, /* query NOT result */
+            $queryBuilder,
             $page,
-            3 /*limit per page*/
+            3
         );
 
         $photos = $this->photoRepository->getList(1, 7);
-
-//        \dd($pagination);
-
 
         return $this->render('blog/index.html.twig', [
             'photos' => $photos,
@@ -78,6 +75,12 @@ class BlogController extends AbstractController
      */
     public function article(int $id)
     {
-        return $this->render('blog/article.html.twig');
+        $article = $this->articleRepository->find($id);
+        $photos = $this->photoRepository->getList(1, 7);
+
+        return $this->render('blog/article.html.twig', [
+            'article' => $article,
+            'photos' => $photos
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\PhotoRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,12 +10,23 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends AbstractController
 {
+    private $photoRepository;
+
+    public function __construct(PhotoRepositoryInterface $photoRepository)
+    {
+        $this->photoRepository = $photoRepository;
+    }
+
     /**
      * @Route("/contact", name="contact")
      */
     public function index()
     {
-        return $this->render('contact/index.html.twig');
+        $photos = $this->photoRepository->getList(1, 7);
+
+        return $this->render('contact/index.html.twig', [
+            'photos' => $photos
+        ]);
     }
 
     /**

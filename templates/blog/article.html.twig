@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!{% endblock %}
+
+{% block social_sidebar_area %}
+    <!-- Social Sidebar Area Start -->
+    <div class="social-sidebar-area">
+        <!-- Social Area -->
+        {% include 'common/social_info_area.html.twig' %}
+    </div>
+    <!-- Social Sidebar Area End -->
+{% endblock %}
+
+{% block body %}
+    <!-- About Me Area Start -->
+    <section class="about-me-area mt-100 section_padding_100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="about-me-thumb">
+                        <img src="{{ storage.getPhotoUrl(article.photoId) }}" alt="">
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="about-content mt-100 mb-100 text-center">
+                        <span></span>
+                        <h2>{{ article.title }}</h2>
+                        <p>{{ article.text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Me Area End -->
+{% endblock %}
+
+{% block footer %}
+    {% include 'common/follow_me_instagram.html.twig' %}
+    {% include 'common/footer_row.html.twig' %}
+    {% include 'common/copyright_row.html.twig' %}
+{% endblock %}
